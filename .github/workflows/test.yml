@@ -58,12 +58,14 @@ jobs:
           if [ "${{ matrix.userName }}" == "Klosw" ]; then
             # 进行 sed 修改
             sed -i 's/\.concat(buildTime())/ +\"${{ env.tag }}\"/g' app/build.gradle 
+            find app/src/main/app/src/main/res/ -name "strings.xml" -exec sed -i 's/CatVodTVOfficial\/TVBoxOSC/Klosw\/BuildTVBoxOSC/g' {} +
+            sed -i 's/o0HalfLife0o\/TVBoxOSC/Klosw\/BuildTVBoxOSC/g' app/src/main/java/com/github/tvbox/osc/util/Github.java
+            sed -i 's/takagen99/Klosw/g' app/src/main/java/com/github/tvbox/osc/util/Github.java
           else
              sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'${{ env.tag }}\'#" app/build.gradle
              sed -i "/android:text=/s#=\"#=\"${{ env.tag }}\\\\n\\\\n#" app/src/main/res/layout/dialog_about.xml
           fi 
-          sed -i 's/o0HalfLife0o\/TVBoxOSC/Klosw\/BuildTVBoxOSC/g' app/src/main/java/com/github/tvbox/osc/util/Github.java
-          sed -i 's/takagen99/Klosw/g' app/src/main/java/com/github/tvbox/osc/util/Github.java
+       
           
           echo 'crosswalk源，防挂'
           if grep -q 'crosswalk' build.gradle; then
