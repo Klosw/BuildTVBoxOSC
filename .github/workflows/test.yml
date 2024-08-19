@@ -63,7 +63,8 @@ jobs:
              sed -i "/android:text=/s#=\"#=\"${{ env.tag }}\\\\n\\\\n#" app/src/main/res/layout/dialog_about.xml
           fi 
           sed -i 's/o0HalfLife0o\/TVBoxOSC/Klosw\/BuildTVBoxOSC/g' app/src/main/java/com/github/tvbox/osc/util/Github.java
-
+          sed -i 's/takagen99/Klosw/g' app/src/main/java/com/github/tvbox/osc/util/Github.java
+          
           echo 'crosswalk源，防挂'
           if grep -q 'crosswalk' build.gradle; then
             sed -i "/crosswalk/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" build.gradle
