@@ -70,7 +70,7 @@ jobs:
           fi
          
           if [ "${{ matrix.userName }}" == "q215613905" ]; then
-        
+            echo "GRADLE_OPTS=-Xmx3g" >> $GITHUB_ENV 
             echo '修改Q版编译条件'
             sed -i 's/4.2.2/7.4.2/g' build.gradle
             sed -i 's/7.3.3/7.5/g' gradle/wrapper/gradle-wrapper.properties
@@ -122,10 +122,7 @@ jobs:
       - name: Build With Gradle
         if: ${{ env.commit }}
         working-directory: TVBoxOSC
-        run: |
-          gradle --status
-          echo "GRADLE_OPTS=-Xmx3g" >> $GITHUB_ENV
-          gradle --status
+        run: | 
           chmod +x gradlew
           ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
       - name: Prepare App
