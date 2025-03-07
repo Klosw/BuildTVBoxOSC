@@ -24,9 +24,9 @@ jobs:
           - userName: Klosw
             repoName: Box
             branchName: main
-          - userName: q215613905
-            repoName: TVBoxOS
-            branchName: main
+          #- userName: q215613905
+            #repoName: TVBoxOS
+            #branchName: main
             
     steps:
       - name: Checkout
