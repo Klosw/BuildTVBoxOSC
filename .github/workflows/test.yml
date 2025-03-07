@@ -128,7 +128,7 @@ jobs:
             ./gradlew assemblerelease --build-cache --parallel --max-workers=4 --daemon --warning-mode all
           else
             ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
-          if
+          fi
       - name: Prepare App
         if: ${{ env.commit }}
         working-directory: TVBoxOSC
