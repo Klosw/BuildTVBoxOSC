@@ -72,7 +72,6 @@ jobs:
           if [ "${{ matrix.userName }}" == "q215613905" ]; then
             sed -i 's/4.2.2/7.4.2/g' build.gradle
             sed -i 's/7.3.3/7.5/g' gradle/wrapper/gradle-wrapper.properties
-          else
           fi
           
           echo 'crosswalk源，防挂'
