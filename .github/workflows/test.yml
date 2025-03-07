@@ -70,7 +70,7 @@ jobs:
           fi
          
           if [ "${{ matrix.userName }}" == "q215613905" ]; then
-            echo "GRADLE_OPTS=-Xmx4g" >> $GITHUB_ENV 
+            # echo "GRADLE_OPTS=-Xmx4g" >> $GITHUB_ENV 
             echo '修改Q版编译条件'
             sed -i 's/4.2.2/7.4.2/g' build.gradle
             sed -i 's/7.3.3/7.5/g' gradle/wrapper/gradle-wrapper.properties
@@ -124,7 +124,11 @@ jobs:
         working-directory: TVBoxOSC
         run: | 
           chmod +x gradlew
-          ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
+          if [ "${{ matrix.userName }}" == "q215613905" ]; then
+            ./gradlew assemblerelease --build-cache --parallel --max-workers=4 --daemon --warning-mode all
+          else
+            ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
+          if
       - name: Prepare App
         if: ${{ env.commit }}
         working-directory: TVBoxOSC
