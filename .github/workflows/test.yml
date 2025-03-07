@@ -125,7 +125,7 @@ jobs:
         run: | 
           chmod +x gradlew
           if [ "${{ matrix.userName }}" == "q215613905" ]; then
-            ./gradlew assemblerelease --build-cache --parallel --max-workers=4 --no-daemon --warning-mode all
+            ./gradlew assemblerelease --build-cache --parallel --max-workers=4 --daemon -Dandroid.enableR8=false --warning-mode all 
           else
             ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
           fi
