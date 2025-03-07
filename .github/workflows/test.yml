@@ -70,8 +70,7 @@ jobs:
           fi
          
           if [ "${{ matrix.userName }}" == "q215613905" ]; then
-            echo 'Increase Gradle JVM Memory'
-            echo "GRADLE_OPTS=-Xmx3g" >> $GITHUB_ENV
+        
             echo '修改Q版编译条件'
             sed -i 's/4.2.2/7.4.2/g' build.gradle
             sed -i 's/7.3.3/7.5/g' gradle/wrapper/gradle-wrapper.properties
@@ -124,6 +123,7 @@ jobs:
         if: ${{ env.commit }}
         working-directory: TVBoxOSC
         run: |
+          echo "GRADLE_OPTS=-Xmx3g" >> $GITHUB_ENV
           chmod +x gradlew
           ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
       - name: Prepare App
