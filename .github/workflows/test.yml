@@ -123,7 +123,9 @@ jobs:
         if: ${{ env.commit }}
         working-directory: TVBoxOSC
         run: |
+          gradle --status
           echo "GRADLE_OPTS=-Xmx3g" >> $GITHUB_ENV
+          gradle --status
           chmod +x gradlew
           ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
       - name: Prepare App
